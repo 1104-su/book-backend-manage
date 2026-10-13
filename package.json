@@ -1,0 +1,36 @@
+{
+  "name": "book-backend-manage",
+  "version": "1.0.0",
+  "description": "图书借阅系统(后台管理) — Express + MySQL + EJS 实现（quiz07 内侧 07）",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "private": true,
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "jest --runInBand --passWithNoTests"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "setupFiles": [
+      "<rootDir>/tests/setup.js"
+    ]
+  },
+  "keywords": [
+    "express",
+    "mysql",
+    "ejs",
+    "book-management"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^18.0.7",
+    "ejs": "^7.0.1",
+    "express": "^5.3.0",
+    "mysql2": "^3.24.5"
+  },
+  "devDependencies": {
+    "jest": "^30.5.2",
+    "supertest": "^7.3.1"
+  }
+}
