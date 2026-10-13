@@ -1,5 +1,7 @@
 <%- include('partials/header', { title: title }) %>
 
+<div class="container">
+
 <h1 class="page-title"><%= title %></h1>
 
 <!-- 查询区：按图书名称模糊查询，输入框保留查询条件 -->
@@ -40,8 +42,7 @@
       <td class="actions">
         <a href="<%= b.viewUrl %>">查看</a>
         <a href="<%= b.editUrl %>">修改</a>
-        <form method="post" action="/books/<%= b.bookId %>/delete" class="delete-form"
-              onsubmit="return confirm('确定删除该图书信息？');">
+        <form method="post" action="/books/<%= b.bookId %>/delete" class="delete-form">
           <button type="submit" class="link-button">删除</button>
         </form>
       </td>
@@ -61,5 +62,7 @@
 <!-- 操作结果提示：新增/修改/删除成功或失败 -->
 <script>alert(<%- msgJs %>);</script>
 <% } %>
+
+</div>
 
 <%- include('partials/footer') %>

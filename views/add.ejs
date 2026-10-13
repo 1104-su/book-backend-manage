@@ -1,5 +1,7 @@
 <%- include('partials/header', { title: title }) %>
 
+<div class="container narrow">
+
 <h1 class="page-title"><%= title %></h1>
 
 <!-- 新增图书：必填项（图书编号/名称/类型/作者/出版社/是否借阅/入库人/入库时间） -->
@@ -49,5 +51,7 @@
     <a class="btn" href="<%= backUrl %>">返回</a>
   </div>
 </form>
+
+</div>
 
 <%- include('partials/footer') %>

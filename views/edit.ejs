@@ -1,5 +1,7 @@
 <%- include('partials/header', { title: title }) %>
 
+<div class="container narrow">
+
 <h1 class="page-title"><%= title %></h1>
 
 <!-- 修改图书：入库人、入库时间为只读，不可修改 -->
@@ -49,5 +51,7 @@
     <a class="btn" href="<%= backUrl %>">返回</a>
   </div>
 </form>
+
+</div>
 
 <%- include('partials/footer') %>

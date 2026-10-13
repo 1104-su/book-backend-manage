@@ -1,5 +1,7 @@
 <%- include('partials/header', { title: title }) %>
 
+<div class="container narrow">
+
 <h1 class="page-title"><%= title %></h1>
 
 <!-- 查看图书详细信息：所有字段只读 -->
@@ -36,6 +38,8 @@
 
 <div class="buttons">
   <a class="btn" href="<%= backUrl %>">返回</a>
+</div>
+
 </div>
 
 <%- include('partials/footer') %>
