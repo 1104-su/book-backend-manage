@@ -1,0 +1,41 @@
+<%- include('partials/header', { title: title }) %>
+
+<h1 class="page-title"><%= title %></h1>
+
+<!-- 查看图书详细信息：所有字段只读 -->
+<table class="form-table">
+  <tr>
+    <td class="label">图书编号：</td>
+    <td><input type="text" class="field readonly" value="<%= book.bookCode %>" readonly></td>
+    <td class="label">图书名称：</td>
+    <td><input type="text" class="field readonly" value="<%= book.bookName %>" readonly></td>
+  </tr>
+  <tr>
+    <td class="label">图书类型：</td>
+    <td><input type="text" class="field readonly" value="<%= book.typeName %>" readonly></td>
+    <td class="label">作者：</td>
+    <td><input type="text" class="field readonly" value="<%= book.bookAuthor %>" readonly></td>
+  </tr>
+  <tr>
+    <td class="label">出版社：</td>
+    <td><input type="text" class="field readonly" value="<%= book.publishPress %>" readonly></td>
+    <td class="label">是否借阅：</td>
+    <td>
+      <select class="field readonly" disabled>
+        <option><%= book.borrowedLabel %></option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">入库人：</td>
+    <td><input type="text" class="field readonly" value="<%= book.createdBy %>" readonly></td>
+    <td class="label">入库时间：</td>
+    <td><input type="text" class="field readonly" value="<%= book.creationTimeDisplay %>" readonly></td>
+  </tr>
+</table>
+
+<div class="buttons">
+  <a class="btn" href="<%= backUrl %>">返回</a>
+</div>
+
+<%- include('partials/footer') %>

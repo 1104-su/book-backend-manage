@@ -1,0 +1,53 @@
+<%- include('partials/header', { title: title }) %>
+
+<h1 class="page-title"><%= title %></h1>
+
+<!-- 新增图书：必填项（图书编号/名称/类型/作者/出版社/是否借阅/入库人/入库时间） -->
+<form class="book-form" method="post" action="/books" id="book-form">
+  <table class="form-table">
+    <tr>
+      <td class="label">图书编号：</td>
+      <td><input type="text" class="field" name="bookCode" value="<%= book.bookCode %>"><span class="required">*</span></td>
+      <td class="label">图书名称：</td>
+      <td><input type="text" class="field" name="bookName" value="<%= book.bookName %>"><span class="required">*</span></td>
+    </tr>
+    <tr>
+      <td class="label">图书类型：</td>
+      <td>
+        <select class="field" name="bookType">
+          <option value="">——请选择——</option>
+          <% types.forEach(function (t) { %>
+          <option value="<%= t.id %>" <%= String(book.bookType) === String(t.id) ? 'selected' : '' %>><%= t.typeName %></option>
+          <% }); %>
+        </select>
+        <span class="required">*</span>
+      </td>
+      <td class="label">作者：</td>
+      <td><input type="text" class="field" name="bookAuthor" value="<%= book.bookAuthor %>"><span class="required">*</span></td>
+    </tr>
+    <tr>
+      <td class="label">出版社：</td>
+      <td><input type="text" class="field" name="publishPress" value="<%= book.publishPress %>"><span class="required">*</span></td>
+      <td class="label">是否借阅：</td>
+      <td>
+        <select class="field" name="borrowed">
+          <option value="0" <%= Number(book.borrowed) !== 1 ? 'selected' : '' %>>未借阅</option>
+          <option value="1" <%= Number(book.borrowed) === 1 ? 'selected' : '' %>>已借阅</option>
+        </select>
+        <span class="required">*</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">入库人：</td>
+      <td><input type="text" class="field" name="createdBy" value="<%= book.createdBy %>"><span class="required">*</span></td>
+      <td class="label">入库时间：</td>
+      <td><input type="text" class="field" name="creationTime" value="<%= book.creationTime %>"><span class="required">*</span></td>
+    </tr>
+  </table>
+  <div class="buttons">
+    <button type="submit" class="btn">保存</button>
+    <a class="btn" href="<%= backUrl %>">返回</a>
+  </div>
+</form>
+
+<%- include('partials/footer') %>

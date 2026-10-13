@@ -1,0 +1,65 @@
+<%- include('partials/header', { title: title }) %>
+
+<h1 class="page-title"><%= title %></h1>
+
+<!-- 查询区：按图书名称模糊查询，输入框保留查询条件 -->
+<form class="search-form" method="get" action="/">
+  <label for="keyword">图书名称：</label>
+  <input type="text" id="keyword" name="keyword" value="<%= keyword %>">
+  <button type="submit" class="search-btn">查询</button>
+</form>
+
+<div class="toolbar">
+  <a class="btn" href="<%= newUrl %>">新增</a>
+</div>
+
+<!-- 图书列表：隔行变色由行上的 row-even / row-odd 类控制 -->
+<table class="book-table" border="1" cellspacing="0" cellpadding="6">
+  <thead>
+    <tr>
+      <th>图书编号</th>
+      <th>图书分类</th>
+      <th>图书名称</th>
+      <th>作者</th>
+      <th>出版社</th>
+      <th>入库时间</th>
+      <th>是否借阅</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% books.forEach(function (b, i) { %>
+    <tr class="row-<%= i % 2 === 0 ? 'even' : 'odd' %>">
+      <td><%= b.bookCode %></td>
+      <td><%= b.typeName %></td>
+      <td><%= b.bookName %></td>
+      <td><%= b.bookAuthor %></td>
+      <td><%= b.publishPress %></td>
+      <td><%= b.creationTimeDisplay %></td>
+      <td><%= b.borrowedLabel %></td>
+      <td class="actions">
+        <a href="<%= b.viewUrl %>">查看</a>
+        <a href="<%= b.editUrl %>">修改</a>
+        <form method="post" action="/books/<%= b.bookId %>/delete" class="delete-form"
+              onsubmit="return confirm('确定删除该图书信息？');">
+          <button type="submit" class="link-button">删除</button>
+        </form>
+      </td>
+    </tr>
+    <% }); %>
+    <% if (books.length === 0) { %>
+    <tr class="row-even empty-row">
+      <td colspan="8">没有符合条件的图书</td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<%- include('partials/pagination', { keyword: keyword, page: page, totalPages: totalPages }) %>
+
+<% if (msgJs) { %>
+<!-- 操作结果提示：新增/修改/删除成功或失败 -->
+<script>alert(<%- msgJs %>);</script>
+<% } %>
+
+<%- include('partials/footer') %>
